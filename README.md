@@ -26,7 +26,7 @@ Make sure you have Node.js and npm installed on your machine.
 2. Obtain the Firebase SDK configuration and paste it inside the `.env.local` file:
 
    ```env
-    apiKey = contact developer for api key
+    apiKey = contact developer for api key (on pdf submission)
    ```
 
 ## Running the Application
