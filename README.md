@@ -1,4 +1,4 @@
-# Restaurant Delivery Web App
+# FoodShare Restaurant Web App
 
 ## Description
 
@@ -15,6 +15,9 @@ Make sure you have Node.js and npm installed on your machine.
 2. Navigate to the project directory.
 
 3. Install dependencies.
+ ```bash
+    npm install
+   ```
 
 ## Firebase Configuration
 
@@ -25,10 +28,13 @@ Make sure you have Node.js and npm installed on your machine.
    ```env
     apiKey = contact developer for api key
    ```
-   
+
 ## Running the Application
 
 1. Run the application locally.
+     ```bash
+    npm run dev
+   ```
 
    The application can be accessed at [http://localhost:3000](http://localhost:3000).
    
