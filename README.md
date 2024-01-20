@@ -49,3 +49,22 @@ Please contribute to this project by submitting pull requests.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Team Description
+- Herlina Rifa - Hustler or Product Manager
+- Listia Wahyu - Hipster or UI/UX Designer
+- Ghifari Nafhan - Hacker or Fullstack Web Developer
+- Muhammad Irfan - Hacker or Fullstack Mobile Develope
+
+## Product Description
+Introducing FoodShare, an app connecting restaurants with surplus food to users through affordable packages. Addressing food waste, the platform offers an eco-friendly and budget-friendly way for users to explore diverse cuisines. Join us in revolutionizing dining and promoting sustainability with FoodShare.
+
+## Screenshoot
+<img src="https://i.imgur.com/SNTQvEj.png" height="300" />
+<br /><br />
+<img src="https://i.imgur.com/A8cOOvX.png" height="300" />
+<br /><br />
+<img src="https://i.imgur.com/neDHAn4.png" height="300" />
+<br /><br />
+<img src=https://i.imgur.com/sxaX5Xa.png"" height="300" />
+<br /><br />
