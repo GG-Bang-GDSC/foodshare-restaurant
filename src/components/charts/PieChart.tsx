@@ -9,12 +9,12 @@ const LineChart = (props) => {
   const { chartData, chartOptions } = props;
 
   return (
-    // @ts-expect-error
     <Chart
       options={chartOptions}
-      type="line"
-      width="100%"
+      type="pie"
+      width="150%"
       height="100%"
+      
       series={chartData}
     />
   );

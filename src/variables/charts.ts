@@ -1,7 +1,7 @@
 export const barChartDataDailyTraffic = [
   {
-    name: 'Daily Traffic',
-    data: [20, 30, 40, 20, 45, 50, 30],
+    name: 'Weekly Revenue',
+    data: [390188, 119179, 470365, 127801, 226980, 132003, 153971],
   },
 ];
 
@@ -17,6 +17,11 @@ export const barChartOptionsDailyTraffic = {
       fontFamily: undefined,
       backgroundColor: '#000000',
     },
+    y:{
+      formatter: function (value: any) {
+        return "Rp. " + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+    },
     onDatasetHover: {
       style: {
         fontSize: '12px',
@@ -26,7 +31,7 @@ export const barChartOptionsDailyTraffic = {
     theme: 'dark',
   },
   xaxis: {
-    categories: ['00', '04', '08', '12', '14', '16', '18'],
+    categories: ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'],
     show: false,
     labels: {
       show: true,
@@ -44,7 +49,7 @@ export const barChartOptionsDailyTraffic = {
     },
   },
   yaxis: {
-    show: false,
+    show: true,
     color: 'black',
     labels: {
       show: true,
@@ -102,9 +107,224 @@ export const barChartOptionsDailyTraffic = {
   },
 };
 
+export const barChartDataTotalOrder = [
+  {
+    name: 'Total Order',
+    data: [30, 210, 181, 20, 40, 10],
+  },
+];
+
+export const barChartOptionsTotalOrder = {
+  chart: {
+    toolbar: {
+      show: false,
+    },
+  },
+  tooltip: {
+    style: {
+      fontSize: '12px',
+      fontFamily: undefined,
+      backgroundColor: '#000000',
+    },
+    onDatasetHover: {
+      style: {
+        fontSize: '12px',
+        fontFamily: undefined,
+      },
+    },
+    theme: 'dark',
+  },
+  xaxis: {
+    categories: ['Roti & Kue', 'Makanan Berat', 'Minuman', 'Camilan', 'Buah & Sayur', 'Makanan Vegan'],
+    show: false,
+    labels: {
+      show: true,
+      style: {
+        colors: '#A3AED0',
+        fontSize: '14px',
+        fontWeight: '500',
+      },
+    },
+    axisBorder: {
+      show: false,
+    },
+    axisTicks: {
+      show: false,
+    },
+  },
+  yaxis: {
+    show: true,
+    color: 'black',
+    labels: {
+      show: true,
+      style: {
+        colors: '#CBD5E0',
+        fontSize: '14px',
+      },
+    },
+  },
+  grid: {
+    show: false,
+    strokeDashArray: 5,
+    yaxis: {
+      lines: {
+        show: true,
+      },
+    },
+    xaxis: {
+      lines: {
+        show: false,
+      },
+    },
+  },
+  fill: {
+    type: 'gradient',
+    gradient: {
+      type: 'vertical',
+      shadeIntensity: 1,
+      opacityFrom: 0.7,
+      opacityTo: 0.9,
+      colorStops: [
+        [
+          {
+            offset: 0,
+            color: '#4318FF',
+            opacity: 1,
+          },
+          {
+            offset: 100,
+            color: 'rgba(67, 24, 255, 1)',
+            opacity: 0.28,
+          },
+        ],
+      ],
+    },
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 10,
+      columnWidth: '40px',
+    },
+  },
+};
+
+export const barChartDataTotalSales= [
+  {
+    name: 'Total Sales',
+    data: [510861, 3576028, 3082195, Math.round(20/491*8361095), Math.round(40/491*8361095), Math.round(10/491*8361095)],
+  },
+];
+
+export const barChartOptionsTotalSales= {
+  chart: {
+    toolbar: {
+      show: false,
+    },
+  },
+  tooltip: {
+    style: {
+      fontSize: '12px',
+      fontFamily: undefined,
+      backgroundColor: '#000000',
+    },
+    y:{
+      formatter: function (value: any) {
+        return "Rp. " + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+    },
+    onDatasetHover: {
+      style: {
+        fontSize: '12px',
+        fontFamily: undefined,
+      },
+    },
+    theme: 'dark',
+  },
+  xaxis: {
+    categories: ['Roti & Kue', 'Makanan Berat', 'Minuman', 'Camilan', 'Buah & Sayur', 'Makanan Vegan'],
+    show: false,
+    labels: {
+      show: true,
+      style: {
+        colors: '#A3AED0',
+        fontSize: '14px',
+        fontWeight: '500',
+      },
+    },
+    axisBorder: {
+      show: false,
+    },
+    axisTicks: {
+      show: false,
+    },
+  },
+  yaxis: {
+    show: true,
+    color: 'black',
+    labels: {
+      show: true,
+      style: {
+        colors: '#CBD5E0',
+        fontSize: '14px',
+      },
+    },
+  },
+  grid: {
+    show: false,
+    strokeDashArray: 5,
+    yaxis: {
+      lines: {
+        show: true,
+      },
+    },
+    xaxis: {
+      lines: {
+        show: false,
+      },
+    },
+  },
+  fill: {
+    type: 'gradient',
+    gradient: {
+      type: 'vertical',
+      shadeIntensity: 1,
+      opacityFrom: 0.7,
+      opacityTo: 0.9,
+      colorStops: [
+        [
+          {
+            offset: 0,
+            color: '#4318FF',
+            opacity: 1,
+          },
+          {
+            offset: 100,
+            color: 'rgba(67, 24, 255, 1)',
+            opacity: 0.28,
+          },
+        ],
+      ],
+    },
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 10,
+      columnWidth: '40px',
+    },
+  },
+};
+
+export const pieChartData = [32, 36, 4, 6,8, 2 ,12];
+
 export const pieChartOptions = {
-  labels: ['Your files', 'System', 'Empty'],
-  colors: ['#4318FF', '#6AD2FF', '#EFF4FB'],
+  labels: ['Indomie', 'Es Teh', 'Krupuk', 'Roti Bakar', 'Pisang', 'Salad', 'Ayam Geprek'],
+  colors: ['#4318FF', '#6AD2FF', '#7BEBE5', '#a195fd', '#93c5fd', '#d8b4fe', '#fca5a5'],
   chart: {
     width: '50px',
   },
@@ -116,10 +336,10 @@ export const pieChartOptions = {
     },
   },
   legend: {
-    show: false,
+    show: true,
   },
   dataLabels: {
-    enabled: false,
+    enabled: true,
   },
   hover: { mode: null },
   plotOptions: {
@@ -127,13 +347,13 @@ export const pieChartOptions = {
       expandOnClick: false,
       donut: {
         labels: {
-          show: false,
+          show: true,
         },
       },
     },
   },
   fill: {
-    colors: ['#4318FF', '#6AD2FF', '#EFF4FB'],
+    colors: ['#4318FF', '#6AD2FF', '#7BEBE5', '#a195fd', '#93c5fd', '#d8b4fe', '#fca5a5'],
   },
   tooltip: {
     enabled: true,
@@ -143,10 +363,15 @@ export const pieChartOptions = {
       fontFamily: undefined,
       backgroundColor: '#000000',
     },
+    y:{
+      formatter: function (value: any) {
+        return value.toString() + " %";
+      }
+    }
   },
 };
 
-export const pieChartData = [63, 25, 12];
+
 
 export const barChartDataWeeklyRevenue = [
   {
@@ -259,13 +484,8 @@ export const barChartOptionsWeeklyRevenue = {
 export const lineChartDataTotalSpent = [
   {
     name: 'Revenue',
-    data: [50, 64, 48, 66, 49, 68],
+    data: [390188, 119179, 470365, 127801, 226980, 132003, 153971, 139270, 130426, 239495, 377698, 375486, 266833, 209003, 395167, 271908, 112627, 181865, 433913, 461420, 472175, 369230, 321992, 213207, 345361, 433600, 400673, 227352, 150742, 211164],
     color: '#4318FF',
-  },
-  {
-    name: 'Profit',
-    data: [30, 40, 24, 46, 20, 46],
-    color: '#6AD2FF',
   },
 ];
 
@@ -302,6 +522,11 @@ export const lineChartOptionsTotalSpent = {
     x: {
       format: 'dd/MM/yy HH:mm',
     },
+    y:{
+      formatter: function (value: any) {
+        return "Rp. " + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+    }
   },
   grid: {
     show: false,
@@ -322,10 +547,41 @@ export const lineChartOptionsTotalSpent = {
     },
     type: 'text',
     range: undefined,
-    categories: ['SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB'],
+    categories: [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "30"
+  ],
   },
 
   yaxis: {
-    show: false,
+    show: true,
   },
 };

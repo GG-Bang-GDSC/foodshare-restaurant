@@ -15,6 +15,11 @@ import DailyTraffic from 'components/admin/default/DailyTraffic';
 import TaskCard from 'components/admin/default/TaskCard';
 import tableDataCheck from 'variables/data-tables/tableDataCheck';
 import tableDataComplex from 'variables/data-tables/tableDataComplex';
+import TotalOrder from 'components/admin/default/TotalOrder';
+import TotalSales from 'components/admin/default/TotalSales';
+import { FaTrophy } from "react-icons/fa";
+import BestProdTable from 'components/admin/default/BesrProdTable';
+
 
 const Dashboard = () => {
   return (
@@ -27,36 +32,26 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="mt-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-6">
+      <div className="mt-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-4 3xl:grid-cols-4">
         <Widget
           icon={<MdBarChart className="h-7 w-7" />}
-          title={'Earnings'}
-          subtitle={'$340.5'}
+          title={'Profit'}
+          subtitle={'Rp 1.121.921'}
         />
         <Widget
-          icon={<IoDocuments className="h-6 w-6" />}
-          title={'Spend this month'}
-          subtitle={'$642.39'}
-        />
-        <Widget
-          icon={<MdBarChart className="h-7 w-7" />}
+          icon={<IoDocuments className="h-7 w-7" />}
           title={'Sales'}
-          subtitle={'$574.34'}
+          subtitle={'Rp 8.361.095'}
         />
         <Widget
-          icon={<MdDashboard className="h-6 w-6" />}
-          title={'Your Balance'}
-          subtitle={'$1,000'}
+          icon={<MdDashboard className="h-7 w-7" />}
+          title={'Total Order'}
+          subtitle={'491'}
         />
         <Widget
-          icon={<MdBarChart className="h-7 w-7" />}
-          title={'New Tasks'}
-          subtitle={'145'}
-        />
-        <Widget
-          icon={<IoMdHome className="h-6 w-6" />}
-          title={'Total Projects'}
-          subtitle={'$2433'}
+          icon={<FaTrophy  className="h-7 w-7" />}
+          title={'Brand Ranking'}
+          subtitle={'1/199'}
         />
       </div>
 
@@ -66,25 +61,35 @@ const Dashboard = () => {
         <TotalSpent />
         <WeeklyRevenue />
       </div>
+      <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
+        <TotalOrder />
+        <TotalSales />
+      </div>
 
       {/* Tables & Charts */}
 
-      <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-2">
+      <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-2 grid-rows-2">
         {/* Check Table */}
         <div>
-          <CheckTable tableData={tableDataCheck} />
+          {/* <CheckTable tableData={tableDataCheck} /> */}
+          <PieChartCard title={"Total Order"} />
+        </div>
+        <div>
+          {/* <CheckTable tableData={tableDataCheck} /> */}
+          <PieChartCard title={"Total Revenue"} />
         </div>
 
         {/* Traffic chart & Pie Chart */}
 
-        <div className="grid grid-cols-1 gap-5 rounded-[20px] md:grid-cols-2">
+        {/* <div className="grid grid-cols-1 gap-5 rounded-[20px] md:grid-cols-2">
           <DailyTraffic />
-          <PieChartCard />
-        </div>
+          <DailyTraffic />
+          {/* <PieChartCard /> */}
+        {/* </div> */}
 
         {/* Complex Table , Task & Calendar */}
 
-        <ComplexTable tableData={tableDataComplex} />
+        <BestProdTable tableData={tableDataComplex} />
 
         {/* Task chart & Calendar */}
 
