@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaBox, FaHistory  } from 'react-icons/fa';
+import { FaBox, FaCommentDots, FaHistory, FaRegCommentDots  } from 'react-icons/fa';
 import { FaBoxArchive } from "react-icons/fa6";
 import { BiFoodMenu } from "react-icons/bi";
 import { LuClipboardList } from "react-icons/lu";
@@ -60,6 +60,12 @@ const routes = [
     layout: '/admin',
     path: 'history',
     icon: <MdHistory  className="h-6 w-6" />,
+  },
+  {
+    name: 'Review',
+    layout: '/admin',
+    path: 'review',
+    icon: <FaRegCommentDots  className="h-6 w-6" />,
   },
   // {
   //   name: 'Sign In',
