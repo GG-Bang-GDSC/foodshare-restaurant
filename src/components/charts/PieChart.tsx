@@ -5,7 +5,7 @@ const Chart = dynamic(() => import('react-apexcharts'), {
   ssr: false,
 });
 
-const LineChart = (props) => {
+const PieCharts = (props) => {
   const { chartData, chartOptions } = props;
 
   return (
@@ -20,4 +20,4 @@ const LineChart = (props) => {
   );
 };
 
-export default LineChart;
+export default PieCharts;
