@@ -151,7 +151,7 @@ const Navbar = (props: {
                 Order Simulation
               </button>
             </div>
-            <audio ref={audioRef} src="/audio/orderan.mp3" />
+            {/* <audio ref={audioRef} src="/audio/orderan.mp3" /> */}
 
             {orders.length > 0 && orders.map((item, index)=>(
             <button key={index} className="flex w-full items-center">
