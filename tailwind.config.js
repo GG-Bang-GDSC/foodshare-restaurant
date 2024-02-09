@@ -11,6 +11,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'logo': "url('/public/img/auth/Logo.png",
+      },
       width: {
         '1p': '1%',
         '2p': '2%',

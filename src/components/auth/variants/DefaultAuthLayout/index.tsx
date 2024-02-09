@@ -1,6 +1,8 @@
 import authImg from '/public/img/auth/auth.png';
+import logo from '/public/img/auth/Logo.png'
 import NavLink from 'components/link/NavLink';
 import Footer from 'components/footer/FooterAuthDefault';
+import Image from 'next/image';
 function Default(props: { maincard: JSX.Element }) {
   const { maincard } = props;
   return (
@@ -27,14 +29,15 @@ function Default(props: { maincard: JSX.Element }) {
           {maincard}
           <div className="absolute right-0 hidden h-full min-h-screen md:block lg:w-[49vw] 2xl:w-[44vw]">
             <div
-              // style={{ backgroundImage: authImg ? `url(${authImg})` : '' }}
+              // style={{ backgroundImage: `url(${authImg})` }}
               className={`absolute flex h-full w-full items-end justify-center bg-gradient-to-br from-brand-400 to-brand-600 bg-cover bg-center lg:rounded-bl-[120px] xl:rounded-bl-[200px]`}
             >
               <div className="relative flex h-full w-full">
                 <div
-                  style={{ }}
-                  className="flex h-full w-full bg-cover"
+                  // style={{ backgroundImage: `url(${logo})` }}
+                  className="flex justify-center h-full w-full bg-cover "
                 />
+                <Image src={logo} alt="aaaa" className="w-52 h-52 absolute top-[40vh] left-[17vw]" />
               </div>
             </div>
           </div>

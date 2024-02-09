@@ -37,12 +37,7 @@ const routes = [
   //   icon: <MdBarChart className="h-6 w-6" />,
   //   path: 'data-tables',
   // },
-  // {
-  //   name: 'Profile',
-  //   layout: '/admin',
-  //   path: 'profile',
-  //   icon: <MdPerson className="h-6 w-6" />,
-  // },
+
   {
     name: 'Menu',
     layout: '/admin',
@@ -66,6 +61,12 @@ const routes = [
     layout: '/admin',
     path: 'review',
     icon: <FaRegCommentDots  className="h-6 w-6" />,
+  },
+  {
+    name: 'Profile',
+    layout: '/admin',
+    path: 'profile',
+    icon: <MdPerson className="h-6 w-6" />,
   },
   // {
   //   name: 'Sign In',
