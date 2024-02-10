@@ -44,7 +44,7 @@ const Navbar = (props: {
   useEffect(() => {
     setLoading(true)
     if (orders.length > 0 ) {
-      audioRef.current.play()
+      // audioRef.current.play()
     }
     setLoading(false)
   }, [orders])
