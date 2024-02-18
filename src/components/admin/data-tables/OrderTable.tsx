@@ -44,7 +44,7 @@ function OrderTable(props: { tableData: any }) {
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
-          {info.getValue()}
+          {"-"}
         </p>
       ),
     }),

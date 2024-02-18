@@ -20,7 +20,7 @@ import { useDownloadExcel } from 'react-export-table-to-excel'
 type RowObj = {
   name: string
   status: string
-  date: string
+  date: any
   progress: number
   total: number
   quantity: number
@@ -28,7 +28,7 @@ type RowObj = {
   driver: string
   menu: any
   no: any
-  deliveryTime: any
+  end: any
   orderTime: any
 }
 
@@ -37,6 +37,7 @@ const columnHelper = createColumnHelper<RowObj>()
 // const columns = columnsDataCheck;
 export default function HistoryTable (props: { tableData: any }) {
   const { tableData } = props
+  console.log(tableData)
   const [sorting, setSorting] = React.useState<SortingState>([])
   const tableRef = React.useRef(null)
   const [filter, setFilter] = React.useState({
@@ -71,19 +72,19 @@ export default function HistoryTable (props: { tableData: any }) {
     }
   }
   const columns = [
-    columnHelper.accessor('no', {
-      id: 'id',
-      header: () => (
-        <p className='text-sm font-bold text-gray-600 dark:text-white'>No</p>
-      ),
-      cell: info => (
-        <p className='text-sm font-bold text-navy-700 dark:text-white'>
-          {info.row.index + 1}
-        </p>
-      ),
-    }),
-    columnHelper.accessor('orderTime', {
-      id: 'orderTime',
+    // columnHelper.accessor('id', {
+    //   id: 'id',
+    //   header: () => (
+    //     <p className='text-sm font-bold text-gray-600 dark:text-white'>No</p>
+    //   ),
+    //   cell: info => (
+    //     <p className='text-sm font-bold text-navy-700 dark:text-white'>
+    //       {info.row.index + 1}
+    //     </p>
+    //   ),
+    // }),
+    columnHelper.accessor('date', {
+      id: 'date',
       header: () => (
         <p className='text-sm font-bold text-gray-600 dark:text-white'>
           Order Time
@@ -91,12 +92,12 @@ export default function HistoryTable (props: { tableData: any }) {
       ),
       cell: info => (
         <p className='text-sm font-bold text-navy-700 dark:text-white'>
-          {info.getValue()}
+          {new Date(info.row.original.date?.seconds *1000 ?? 1708157213000).toDateString()}
         </p>
       ),
     }),
-    columnHelper.accessor('deliveryTime', {
-      id: 'deliveryTime',
+    columnHelper.accessor('end', {
+      id: 'end',
       header: () => (
         <p className='text-sm font-bold text-gray-600 dark:text-white'>
           Delivery Time
@@ -104,12 +105,12 @@ export default function HistoryTable (props: { tableData: any }) {
       ),
       cell: info => (
         <p className='text-sm font-bold text-navy-700 dark:text-white'>
-          {info.getValue() ?? '-'}
+          { info.row.original.end? new Date(info.row.original.end.seconds *1000).toDateString() : '-'}
         </p>
       ),
     }),
-    columnHelper.accessor('total', {
-      id: 'total',
+    columnHelper.accessor('menu', {
+      id: 'menu',
       header: () => (
         <p className='text-sm font-bold text-gray-600 dark:text-white'>
           Total Order
@@ -117,8 +118,7 @@ export default function HistoryTable (props: { tableData: any }) {
       ),
       cell: info => (
         <p className='text-sm font-bold text-navy-700 dark:text-white'>
-          {info
-            .getValue()
+          {info.row.original.menu.reduce((accumulator, item) => accumulator + (item.quantity*item.price), 0,)
             .toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}
         </p>
       ),
@@ -136,7 +136,7 @@ export default function HistoryTable (props: { tableData: any }) {
             <MdCheckCircle className='me-1 text-green-500 dark:text-green-300' />
           ) : info.getValue() === 'Dibatalkan' ? (
             <MdCancel className='me-1 text-red-500 dark:text-red-300' />
-          ) : info.getValue() === 'Diprosess' ? (
+          ) : ["Belum Konfirmasi", "Sedang Disiapkan", "Siap Diantar"].includes(info.getValue()) ? (
             <MdOutlineError className='me-1 text-amber-500 dark:text-amber-300' />
           ) : null}
           <p className='text-sm font-bold text-navy-700 dark:text-white'>
@@ -153,38 +153,13 @@ export default function HistoryTable (props: { tableData: any }) {
         </p>
       ),
       cell: info =>
-        info.row.original.status === 'Belum Konfirmasi' ? (
-          <>
-            <button
-              onClick={() => handleConfirm(info.getValue())}
-              className='rounded-lg bg-green-500 px-5 py-2 text-xs font-medium text-white transition duration-200 hover:bg-green-600 active:bg-green-700 dark:bg-green-400 dark:text-white dark:hover:bg-green-300 dark:active:bg-green-200'
-            >
-              Konfirmasi
-            </button>
-          </>
-        ) : info.row.original.status === 'Sedang Disiapkan' ? (
           <div className='flex gap-1'>
             <Link href={`/admin/order/${info.getValue()}`}>
               <button className='rounded-lg bg-brand-500 px-5 py-2 text-xs font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200'>
                 Detail
               </button>
             </Link>
-            <button
-              onClick={() => handleReady(info.getValue())}
-              className='rounded-lg bg-green-500 px-5 py-2 text-xs font-medium text-white transition duration-200 hover:bg-green-600 active:bg-green-700 dark:bg-green-400 dark:text-white dark:hover:bg-green-300 dark:active:bg-green-200'
-            >
-              Siap
-            </button>
           </div>
-        ) : (
-          <>
-            <Link href={`/admin/order/3ZrMRzcFzqOFD0QmVyyw`}>
-              <button className='rounded-lg bg-brand-500 px-5 py-2 text-xs font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200'>
-                Detail
-              </button>
-            </Link>
-          </>
-        ),
     }),
   ] // eslint-disable-next-line
   const [data, setData] = React.useState(() => [...defaultData])
@@ -203,7 +178,7 @@ export default function HistoryTable (props: { tableData: any }) {
       const toDate = new Date(filter.to);
       
       filteredData = filteredData.filter(row => {
-        const orderDate = new Date(row.orderTime); // Assuming orderTime is a date property
+        const orderDate = new Date(row.date.seconds * 1000); // Assuming orderTime is a date property
         return orderDate >= fromDate && orderDate <= toDate;
       });
     }
@@ -274,7 +249,9 @@ export default function HistoryTable (props: { tableData: any }) {
           </label>
           <select onChange={(e)=> setFilter({...filter, status: e.target.value})}  id="countries" className="mt-2 flex h-12 items-center dark:text-white justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none border-gray-200 dark:!border-white/10 ">
                   <option value='all' className="text-gray-900 dark:text-white" selected>Status</option>
-                    <option className="text-gray-900 dark:text-white">Diprosess</option>
+                    <option className="text-gray-900 dark:text-white">Belum Konfirmasi</option>
+                    <option className="text-gray-900 dark:text-white">Sedang Disiapkan</option>
+                    <option className="text-gray-900 dark:text-white">Siap Diantar</option>
                     <option className="text-gray-900 dark:text-white">Selesai</option>
                     <option className="text-gray-900 dark:text-white">Dibatalkan</option>
                   

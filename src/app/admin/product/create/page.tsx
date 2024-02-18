@@ -88,7 +88,7 @@ export default function Page () {
     e.preventDefault()
     if (newProduct.name !== '' && newProduct.description !== '' && newProduct.price !== 0  && newProduct.category !== '' && imageFile) {
       try {
-        await addDoc(collection(db, 'products'), {
+        await addDoc(collection(db, 'foods'), {
           ...newProduct,
           afterPrice:
             newProduct.price - (newProduct.price * newProduct.discount* 100) / 100,

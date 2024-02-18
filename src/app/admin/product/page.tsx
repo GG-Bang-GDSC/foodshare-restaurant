@@ -17,7 +17,7 @@ const Tables = () => {
   const [loading, setLoading] = useState(null)
 
   useEffect(() => {
-    const q = query(collection(db, 'products'))
+    const q = query(collection(db, 'foods'))
     const unsubscribe = onSnapshot(q, (snapshot: QuerySnapshot) => {
       setLoading(true)
       const data = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }))

@@ -19,7 +19,7 @@ import Link from 'next/link'
 type RowObj = {
   name: string
   status: string
-  date: string
+  date: any
   progress: number
   total: number
   quantity: number
@@ -34,7 +34,23 @@ const columnHelper = createColumnHelper<RowObj>()
 export default function ComplexTable (props: { tableData: any }) {
   const { tableData } = props
   const [sorting, setSorting] = React.useState<SortingState>([])
-  let defaultData = tableData
+  let defaultData = tableData.filter((item) => item.status !== 'Selesai')
+
+  function unixTimestampToHHMM(timestamp) {
+    // Create a new Date object with the timestamp (in milliseconds)
+    var date = new Date(timestamp * 1000);
+    
+    // Extract hours and minutes from the Date object
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    
+    // Format the hours and minutes with leading zeros if necessary
+    var formattedHours = hours < 10 ? "0" + hours : hours;
+    var formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+    
+    // Return the formatted time
+    return formattedHours + ":" + formattedMinutes;
+  }
 
   const handleConfirm = async (id) => {
     try {
@@ -76,7 +92,7 @@ export default function ComplexTable (props: { tableData: any }) {
       ),
       cell: info => (
         <p className='text-sm font-bold text-navy-700 dark:text-white'>
-          {info.getValue()}
+          {new Date(info.row.original.date?.seconds *1000 ?? 1708157213000).toDateString()}
         </p>
       ),
     }),

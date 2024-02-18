@@ -7,15 +7,17 @@ import {getStorage} from 'firebase/storage';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+const firebaseConfig =  {
   apiKey: process.env.apiKey,
-  authDomain: "food-share-83948.firebaseapp.com",
-  projectId: "food-share-83948",
-  storageBucket: "food-share-83948.appspot.com",
-  messagingSenderId: "154529058280",
-  appId: "1:154529058280:web:c008037aed2f84efdfe85d",
-  measurementId: "G-2MKXEVM1Q6"
+  authDomain: "foodshare-6baee.firebaseapp.com",
+  projectId: "foodshare-6baee",
+  storageBucket: "foodshare-6baee.appspot.com",
+  messagingSenderId: "248626827956",
+  appId: "1:248626827956:web:6d0f4489398984e7bf7de1",
+  measurementId: "G-M9C13G6XB5"
 };
+
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

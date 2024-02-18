@@ -97,7 +97,7 @@ export default function Page ({ params }: { params: { slug: string } }) {
     e.preventDefault()
     if (newProduct.name !== '') {
       try {
-        await setDoc(doc(db, 'products', id), {
+        await setDoc(doc(db, 'foods', id), {
           ...newProduct,
           afterPrice:
             newProduct.price - (newProduct.price * newProduct.discount * 100) / 100,
@@ -117,7 +117,7 @@ export default function Page ({ params }: { params: { slug: string } }) {
     e.preventDefault()
     if (newProduct.name !== '') {
       try {
-        await addDoc(collection(db, 'products'), {
+        await addDoc(collection(db, 'foods'), {
           ...newProduct,
           afterPrice:
             newProduct.price - (newProduct.price * newProduct.discount) / 100,

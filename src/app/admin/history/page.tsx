@@ -19,7 +19,7 @@ const Tables = () => {
   const [loading, setLoading] = useState(null)
 
   useEffect(() => {
-    const q = query(collection(db, 'orders'))
+    const q = query(collection(db, 'orders') )//where('restaurantId', '==', '1')
     const unsubscribe = onSnapshot(q, (snapshot: QuerySnapshot) => {
       setLoading(true)
       const data = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }))
@@ -40,8 +40,8 @@ const Tables = () => {
   return (
     <div>
       <div className="mt-5 grid h-full grid-cols-1 gap-5 md:grid-cols-1">
-      {/* {(orders.length > 0 && !loading)  && <ComplexTable tableData={orders} />} */}
-      <HistoryTable tableData={tableDataHistory}/>
+      
+      {(orders.length > 0 && !loading)  && <HistoryTable tableData={orders}/>}
       </div>
     </div>
   );

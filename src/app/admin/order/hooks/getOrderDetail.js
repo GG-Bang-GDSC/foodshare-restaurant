@@ -1,6 +1,6 @@
 'useclient'
 import { db } from 'app/firebase'
-import { doc, getDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, limit, query, where } from 'firebase/firestore'
 import { useQuery } from 'react-query'
 
 const getOrderDetail = async orderId => {
@@ -13,6 +13,9 @@ const getOrderDetail = async orderId => {
     if (!orderData) {
       return false
     }
+    // if (orderData.restaurantId != "1dkncd21dcwsd2") {//TODO: restaurantId
+    //   return false
+    // }
     if (orderData.driverId) {
         const driverRef = doc(db, 'drivers', orderData.driverId)
         const driverSnap = await getDoc(driverRef)
@@ -21,10 +24,10 @@ const getOrderDetail = async orderId => {
             return false
         }
     }
-
-    const userRef = doc(db, 'users', orderData.userId)
-    const userSnap = await getDoc(userRef)
-    const userData = userSnap.data()
+    
+    const userQuery = query(collection(db, 'users'), where('id', '==', orderData.userId), limit(1));
+    const userSnap = await getDocs(userQuery);
+    const userData = userSnap.docs[0].data();
     if (!userData) {
       return false
     }

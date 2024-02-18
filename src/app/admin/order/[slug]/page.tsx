@@ -23,9 +23,9 @@ import {  deleteDoc, updateDoc} from 'firebase/firestore';
 export default function Page ({ params }: { params: { slug: string } }) {
     const [order, setOrder] = useState({} as any)
     const [isLoading, setIsLoading] = useState(true)
-    const router = useRouter()
+    const router = useRouter();
     const { slug } = params
-    const orderId = slug
+    const orderId = slug;
     const { data, isError } = useOrderDetail(orderId);
     useEffect(() => {
         if (data) {
@@ -60,6 +60,18 @@ export default function Page ({ params }: { params: { slug: string } }) {
         }
       }
 
+      const handleFinish = async (id) => {
+        try {
+          await updateDoc(doc(db, 'orders', id), {
+            status: 'Selesai',
+            end: new Date()
+          })
+          router.push('/admin/order')
+        } catch (error) {
+          console.log(error)
+        }
+      }
+
   return (
     <div className='mt-5 h-full'>
       <Card extra={'w-full h-full min-h-[100vh] sm:overflow-auto px-6'}>
@@ -80,7 +92,7 @@ export default function Page ({ params }: { params: { slug: string } }) {
                         <div>
                             <p className="font-bold">Delivery Address</p>
                             <div className="mt-2">
-                                <p className="text-sm">{order.user.firstname + " " + order.user.lastname}</p>
+                                <p className="text-sm">{order.user  .full_name}</p>
                                 <p className="text-sm">{order.location}</p>
                                 <p className="text-sm mt-3">{order.user.email}</p>
                                 <p className="text-sm">{order.user.phone}</p>
@@ -149,13 +161,13 @@ export default function Page ({ params }: { params: { slug: string } }) {
               <button onClick={()=> handleReady(orderId)} className='w-full rounded-lg bg-green-500 px-5 py-3 text-xs font-medium text-white transition duration-200 hover:bg-green-600 active:bg-green-700 dark:bg-green-400 dark:text-white dark:hover:bg-green-300 dark:active:bg-green-200'>
                 Siap
               </button>
-        ) : (
+        ) : order.status === 'Siap Diantar' ? (
           <>
-              <button className=' w-full rounded-lg bg-brand-500 px-5 py-3 text-xs font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200'>
+              <button onClick={()=> handleFinish(orderId)} className=' w-full rounded-lg bg-brand-500 px-5 py-3 text-xs font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200'>
                 Selesaikan
               </button>
           </>
-        )}
+        ): (<></>)}
             </div>
 
           </div>

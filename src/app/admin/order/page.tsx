@@ -7,7 +7,7 @@ import tableDataComplex from 'variables/data-tables/tableDataComplex';
 import DevelopmentTable from 'components/admin/data-tables/DevelopmentTable';
 import ColumnsTable from 'components/admin/data-tables/ColumnsTable';
 import ComplexTable from 'components/admin/data-tables/ComplexTable';
-import { collection, getDoc, QuerySnapshot, query, onSnapshot, orderBy } from 'firebase/firestore';
+import { collection, getDoc, QuerySnapshot, query, onSnapshot, orderBy, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from 'app/firebase';
 import Link from 'next/link';
@@ -17,7 +17,7 @@ const Tables = () => {
   const [loading, setLoading] = useState(null)
 
   useEffect(() => {
-    const q = query(collection(db, 'orders'))
+    const q = query(collection(db, 'orders') )//where('restaurantId', '==', '1')
     const unsubscribe = onSnapshot(q, (snapshot: QuerySnapshot) => {
       setLoading(true)
       const data = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }))

@@ -8,6 +8,7 @@ yarn.lock
 /.pnp
 .pnp.js
 
+firebase_old.txt
 # testing
 /coverage
 

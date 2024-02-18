@@ -48,7 +48,7 @@ function CheckTable(props: { tableData: any }) {
 
   const handleDelete = async () => {
     try {
-      await deleteDoc(doc(db, 'products', id.id))
+      await deleteDoc(doc(db, 'foods', id.id))
       onClose()
     } catch (error) {
       console.log(error)

@@ -4,7 +4,7 @@ import { useQuery } from './../../../../../node_modules/react-query/es/react/use
 import { collection, getDocs, query, where, doc, getDoc } from "firebase/firestore";
 
 const getFirebaseData = async(id)=>{
-    const docRef = doc(db, "products", id);
+    const docRef = doc(db, "foods", id);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
         return docSnap.data();
@@ -12,11 +12,6 @@ const getFirebaseData = async(id)=>{
         // doc.data() will be undefined in this case
         return false;
     }
-    
-    // const q = query(collection(db,"products"),where(,"==",id));
-    // const querySnapshot = await getDocs(q);
-    // const data = querySnapshot.docs.map(doc=>doc.data());
-    // return data;
 }
 
 const useFirebaseData = (id)=>{
